@@ -10,15 +10,15 @@
     Alunos
     <ul>
         {% for pessoa in  pessoas%}
-        <li>{{pessoa.id}} - {{pessoa.nome}} </li>
+        <li>{{pessoa.id}} - {{pessoa.nome}} <a href="{% url 'editar' pessoa.id %}">Editar </a></li>
         {% endfor %}
 
     </ul>
 
-    <form action="{% u 'salvar' %}">
+    <form action="{% url 'salvar' %} " method="POST">
+        {% csrf_token %}
         <input type="text" name="nome">
-        <button type="submit">
-        </button>
+        <button type="submit">Salvar</button>
 
    
     </form>
